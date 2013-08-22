@@ -61,8 +61,9 @@ group_avg as
 (
 select avg(n_rating) as n_score from ratings_train
 )
+
 select 
-a.user_id, a.n_rating, 
+a.user_id, a.film_id, a.n_rating, 
 case 
 when c.n_score is not null and b.n_score is not null then
 (b.n_score + c.n_score)/2.0
@@ -79,3 +80,5 @@ user_avg c
 on a.user_id = c.user_id
 cross join 
 group_avg d;
+
+grant all on user_film_avg_train to anon;

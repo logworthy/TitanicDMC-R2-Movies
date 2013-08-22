@@ -2,7 +2,7 @@
 - create a bitmask indicating whether they have rated a given film or not 
 - create a bitmask indicating whether they rated a film highly or not
 */
-drop function user_binmath(integer)
+drop function user_binmath(integer);
 create function user_binmath(integer) returns table (matchstring text, ratestring text)
 as
 $$
@@ -46,7 +46,7 @@ select length(replace($1, '0', ''));
 $$ language sql immutable strict;
 
 /* function to build bitmasks for each user */
-drop function build_bitmasks()
+drop function build_bitmasks();
 create function build_bitmasks() returns boolean as
 $$
 declare
@@ -69,6 +69,6 @@ create table user_bitmasks (
 user_id integer
 , matchstring text
 , ratestring text
-)
+);
 
-select build_bitmasks()
+select build_bitmasks();

@@ -1,16 +1,20 @@
+/*
 select 
 user_id,
 count_bits(matchstring)
 from user_bitmasks
 order by count_bits(matchstring) desc
+*/
 
 create table top_users as
 select * from user_bitmasks
-where count_bits(matchstring) >= 150
+where count_bits(matchstring) >= 150;
 
+/*
 select * from top_users
+*/
 
-drop table top_user_comparisons
+drop table top_user_comparisons;
 create table top_user_comparisons as
 select
 	a.user_id as user1
@@ -25,10 +29,11 @@ select
 from
 	top_users a
 	cross join
-	top_users b
+	top_users b;
 
-
+/*
 	select a.*, (total-non_matches)/(1.0*total) 
 	as match_percent from top_user_comparisons a
 	where user1 <> user2 and total > 0
 	order by match_percent desc
+*/
