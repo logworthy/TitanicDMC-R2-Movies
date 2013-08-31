@@ -5,12 +5,12 @@ CREATE OR REPLACE FUNCTION compare_users(numeric, numeric) RETURNS double precis
 select avg(5-abs(a.n_rating-b.n_rating)) * (1-(1/(5^(count(*)/4)))) 
 from
 (
-select * from flat_train
+select * from ratings_train
 where user_id = $1 
 ) a
 inner join
 (
-select * from flat_train
+select * from ratings_train
 where user_id = $2
 ) b 
 on a.film_id = b.film_id
