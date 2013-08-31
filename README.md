@@ -28,7 +28,9 @@ I also wanted it to be fun!
 ### Tools and Techniques
 
 I decided to use GitHub to manage all my code, and run a PostgreSQL server on an AWS instance.
+
 I thought the common PostgreSQL server would help keep my environment consistent between home and work.
+
 I wasn't sure whether PostgreSQL would be up to the task in terms of using the latest data mining techniques,
 but I wanted to see what I could come up with anyway given its limitations.  In the first round a simple model had won
 so I thought I might at least be able to get somewhere by using clever averages.
@@ -41,7 +43,9 @@ in loading the same tables to both etc.
 
 Some early analytic work showed that all the films and users in the test set that we would need to score
 had some ratings already.  I tried a few different approaches - film average, user average and overall average
-before settling on a combination of the three.  I initially submitted the scores un-rounded, but later realised
+before settling on a combination of the three.  
+
+I initially submitted the scores un-rounded, but later realised
 that rounding would usually do more help than harm and made another submission with rounded scores.
 
 ### Submission 2 - Similarity Scores
@@ -49,6 +53,7 @@ that rounding would usually do more help than harm and made another submission w
 I had the idea of calculating the 'distance' between any two users by looking at how similar their scores were across
 all films that they had both rated.  Then I would give each film a score based on how the most similar user who had
 also rated that film scored it.
+
 My initial attempts went horribly wrong and took forever to run, but I thought
 of several ways to improve across the course of the project:
 * I used bitmasks to concisely express which films a user had rated, and how well they rated them (4 or 5 stars was
@@ -66,7 +71,9 @@ rounding when the score was low, ceil rounding when it was high).
 
 My Rounded Averages model had the lowest error of all models submitted to the competition with an error of 7,140.
 This surprised me a little as the Similarity Scores model performed much better on the training set.  There were quite
-a few parameters to tweak, so I suppose I'm guilty of overfitting.  To fix this, next time I'll be sure to carve away
+a few parameters to tweak, so I suppose I'm guilty of overfitting.  
+
+To fix this, next time I'll be sure to carve away
 a portion of my training set as my own test set to help choose optimal parameters for my models.  I would probably
 also try moving away from bitmasks as a summary of how users rated each film and use a string with their actual scores
 instead.
